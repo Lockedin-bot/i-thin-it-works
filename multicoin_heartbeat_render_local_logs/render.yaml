@@ -1,0 +1,10 @@
+﻿services:
+  - type: web
+    name: multicoin-heartbeat-bot
+    env: docker
+    plan: starter
+    autoDeploy: true
+    disk:
+      name: bot-logs
+      mountPath: /app/logs
+      sizeGB: 1
