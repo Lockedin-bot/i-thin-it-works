@@ -1,0 +1,18 @@
+﻿services:
+  - type: web
+    name: multicoin-heartbeat-bot
+    env: docker
+    plan: starter
+    autoDeploy: true
+    healthCheckPath: /health
+    disk:
+      name: bot-logs
+      mountPath: /app/logs
+      sizeGB: 1
+    envVars:
+      - key: LOG_LEVEL
+        value: INFO
+      - key: SYMBOLS
+        value: BTC-USD,ETH-USD,SOL-USD,LTC-USD,DOGE-USD,ADA-USD
+      - key: TA_TIMEFRAME
+        value: 1m
