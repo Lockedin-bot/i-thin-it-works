@@ -1,0 +1,24 @@
+﻿services:
+  - type: web
+    name: heartbeat-bot
+    env: docker
+    plan: starter
+    autoDeploy: true
+    healthCheckPath: /health
+    disk:
+      name: bot-logs
+      mountPath: /app/logs
+      sizeGB: 1
+    envVars:
+      - key: LOG_LEVEL
+        value: INFO
+      - key: SYMBOLS
+        value: BTC-USD,ETH-USD,SOL-USD
+      - key: TA_TIMEFRAME
+        value: 5m
+      - key: FAST_MA
+        value: "12"
+      - key: SLOW_MA
+        value: "26"
+      - key: LOOP_SEC
+        value: "30"
